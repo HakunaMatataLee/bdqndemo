@@ -1,441 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>李明 | 设计师 & 开发者</title>
-    <style>
-        /* 基础样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* 主容器 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 导航栏 */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px 0;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #333;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 40px;
-        }
-        
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -5px;
-            left: 0;
-            background-color: #333;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-        
-        /* 英雄区域 */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 300;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            color: #666;
-            max-width: 600px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #333;
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 1px solid #333;
-        }
-        
-        .btn:hover {
-            background-color: transparent;
-            color: #333;
-        }
-        
-        /* 关于部分 */
-        section {
-            padding: 120px 0;
-        }
-        
-        .section-title {
-            font-size: 36px;
-            font-weight: 300;
-            margin-bottom: 60px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 1px;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .about-text {
-            flex: 1;
-            padding-right: 60px;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #555;
-        }
-        
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 50%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* 作品集部分 */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            height: 400px;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-overlay h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-        
-        .portfolio-overlay p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        
-        /* 联系部分 */
-        .contact-info {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .contact-info p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin-top: 30px;
-        }
-        
-        .social-links li {
-            margin: 0 15px;
-        }
-        
-        .social-links a {
-            color: #333;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #666;
-        }
-        
-        /* 页脚 */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            background-color: #f0f0f0;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+    <title>李子硕 | 算法工程师</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
-    <header id="header">
+    <nav class="navbar">
         <div class="container">
-            <nav>
-                <a href="#" class="logo">LM</a>
-                <ul class="nav-links">
-                    <li><a href="#about">关于</a></li>
-                    <li><a href="#portfolio">作品</a></li>
-                    <li><a href="#contact">联系</a></li>
-                </ul>
-            </nav>
+            <div class="logo">李子硕</div>
+            <ul class="nav-links">
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#experience">专业经历</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#projects">项目展示</a></li>
+                <li><a href="#education">教育背景</a></li>
+                <li><a href="#contact">联系方式</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首屏展示 -->
+    <header class="hero">
+        <div class="container">
+            <h1>李子硕</h1>
+            <h2>算法工程师</h2>
+            <p>专注于机器学习与深度学习算法开发，致力于提升硬件性能与环境感知能力。</p>
         </div>
     </header>
 
-    <!-- 英雄区域 -->
-    <section class="hero">
+    <!-- 关于我 -->
+    <section id="about" class="section">
         <div class="container">
-            <div class="hero-content">
-                <h1>我是李明<br>设计师 & 开发者</h1>
-                <p>我专注于创造简洁、优雅的数字体验，将美学与功能性完美结合。</p>
-                <a href="#portfolio" class="btn">查看我的作品</a>
-            </div>
+            <h2>关于我</h2>
+            <p>您好，我是李子硕，一名专注于算法开发的工程师。我在大疆创新担任算法工程师，负责硬件性能优化与故障预测等工作。我热爱技术，致力于通过算法提升硬件性能与环境感知能力。</p>
         </div>
     </section>
 
-    <!-- 关于部分 -->
-    <section id="about" class="section-about">
+    <!-- 专业经历 -->
+    <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>我是一名拥有10年经验的设计师和前端开发者，专注于创造有意义的数字体验。我的工作融合了美学敏感性和技术精确性。</p>
-                    <p>在过去的职业生涯中，我曾与多家知名企业合作，包括科技初创公司和世界500强企业，帮助他们打造独特的品牌形象和用户体验。</p>
-                    <p>我相信好的设计应该是无形的 - 它不应该被注意到，而应该让人们专注于他们想要完成的事情。</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/400x400" alt="李明">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 作品集部分 -->
-    <section id="portfolio" class="section-portfolio">
-        <div class="container">
-            <h2 class="section-title">精选作品</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/600x400" alt="项目1">
-                    <div class="portfolio-overlay">
-                        <h3>品牌重塑项目</h3>
-                        <p>为科技公司进行的全面品牌形象更新</p>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/600x400" alt="项目2">
-                    <div class="portfolio-overlay">
-                        <h3>电子商务平台</h3>
-                        <p>高端时尚品牌的定制电商解决方案</p>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/600x400" alt="项目3">
-                    <div class="portfolio-overlay">
-                        <h3>移动应用设计</h3>
-                        <p>健康追踪应用的UI/UX设计</p>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 联系部分 -->
-    <section id="contact" class="section-contact">
-        <div class="container">
-            <h2 class="section-title">联系我</h2>
-            <div class="contact-info">
-                <p>如果您有项目需要讨论或只是想打个招呼，我很乐意听到您的消息。</p>
-                <a href="mailto:hello@liming.com" class="btn">发送邮件</a>
-                <ul class="social-links">
-                    <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                    <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fab fa-github"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            <h2>专业经历</h2>
+            <div class="experience-item">
+                <h3>大疆创新 | 算法工程师 | 2021.07 - 至今</h3>
+                <ul>
+                    <li>负责硬件性能优化算法开发，通过优化飞行控制算法，提升飞行器在复杂环境下的飞行稳定性 25%。</li>
+                    <li>主导硬件故障预测与诊断系统研发，设计并实现基于大数据分析与机器学习的硬件故障预测模型，使硬件故障预测准确率达 80%。</li>
+                    <li>开发多传感器数据融合算法（新一代无人机硬件研发项目），提升飞行器环境感知能力 40%。</li>
+                    <li>主导硬件测试与验证算法优化项目，设计自动化硬件测试算法，提高硬件测试效率 30%。</li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>技能</h2>
+            <ul>
+                <li>算法开发：熟悉机器学习、深度学习算法，擅长多传感器数据融合与优化</li>
+                <li>编程语言：Python、C++、MATLAB</li>
+                <li>工具框架：TensorFlow、PyTorch、ROS</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>项目展示</h2>
+            <p>项目成果待补充。</p>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2>教育背景</h2>
+            <div class="education-item">
+                <h3>北京科技大学 | 计算机科学与技术 | 硕士 | 2018.06 - 2021.09</h3>
+                <p>相关课程：机器学习、深度学习</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>联系方式</h2>
+            <p>电话：13512345678</p>
+            <p>邮箱：lzs_624346249@163.com</p>
+            <p>GitHub：<a href="https://github.com/zhangsan" target="_blank">https://github.com/zhangsan</a></p>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 李明. 保留所有权利。</p>
+            <p>&copy; 2025 李子硕。保留所有权利。</p>
         </div>
     </footer>
 
-    <script>
-        // 滚动时导航栏效果
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-    <!-- Font Awesome 图标库 -->
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,0 +1,144 @@
+/* 基本样式 */
+body {
+    font-family: '微软雅黑', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏样式 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-family: '楷体', serif;
+    color: #333;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin: 0 15px;
+}
+
+.navbar .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #007BFF;
+}
+
+/* 首屏展示样式 */
+.hero {
+    background-color: #fff;
+    text-align: center;
+    padding: 150px 0;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-family: '楷体', serif;
+    color: #333;
+}
+
+.hero h2 {
+    font-size: 36px;
+    font-family: '楷体', serif;
+    color: #666;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #999;
+}
+
+/* 关于我、专业经历、技能、项目展示、教育背景、联系方式样式 */
+.section {
+    padding: 50px 0;
+    margin-bottom: 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 32px;
+    font-family: '楷体', serif;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.experience-item, .education-item {
+    margin-bottom: 20px;
+}
+
+.experience-item h3, .education-item h3 {
+    font-size: 24px;
+    font-family: '楷体', serif;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.experience-item ul, .education-item p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        flex-direction: column;
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hero {
+        padding: 100px 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero h2 {
+       
